@@ -24,11 +24,19 @@ export const putItemHandler = async (event) => {
     const id = body.id;
     const name = body.name;
 
+let librosdisponibles = "true"
+    if (disponible === 'true') {
+        librosdisponibles = "Disponible"
+    } else {
+        librodisponible = "No disponible"
+    }
+
+
     // Creates a new item, or replaces an old item with a new item
     // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
     var params = {
         TableName : tableName,
-        Item: { id : id, name: name }
+        Item: { id : id, nombreLibro: librosdisponibles }
     };
 
     try {
